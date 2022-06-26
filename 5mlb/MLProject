@@ -1,0 +1,61 @@
+name: HW 5mlb by hethwynq
+
+entry_points:
+  main:
+    parameters:
+      train_path_in: string
+      sklearn_model: string
+      model_param1: {type: float, default: 10.0}
+    command: >
+        python main.py
+        --train_path_in {train_path_in}
+        --sklearn_model {sklearn_model}
+        --model_param1 {model_param1}
+  
+  etl_predict:
+    parameters:
+      test_path_in: string
+      pred_path_out: string
+      sklearn_model: string
+      model_version: string
+    command: >
+        python etl_predict.py
+        --test_path_in {test_path_in}
+        --pred_path_out {pred_path_out}
+        --sklearn_model {sklearn_model}
+        --model_version {model_version}
+
+  etl:
+    parameters:
+      etl_path_in: string
+      etl_path_out: string
+    command: >
+        python etl.py
+        --etl_path_in {etl_path_in}
+        --etl_path_out {etl_path_out}
+
+  train:
+    parameters:
+      train_path: string
+      sklearn_model: string
+      model_param1: {type: float, default: 10.0}
+      seed: {type: int, default: 43}
+    command: >
+        python train.py
+        --train_path {train_path}
+        --sklearn_model {sklearn_model}
+        --model_param1 {model_param1}
+        --seed {seed}
+
+  predict:
+    parameters:
+      test_path_in: string
+      predict_path_out: string
+      sklearn_model: string
+      model_version: string
+    command: >
+        python predict.py
+        --test_path_in {test_path_in}
+        --predict_path_out {predict_path_out}
+        --sklearn_model {sklearn_model}
+        --model_version {model_version}
